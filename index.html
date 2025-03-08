@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry 💔</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        h2 {
+            color: #d6336c;
+            font-size: 26px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+        button:hover {
+            background: #e63950;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        .poem-container {
+            display: none;
+            margin-top: 20px;
+            animation: heartbeat 2s infinite;
+        }
+        .discord-box {
+            background: #2C2F33;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .username {
+            color: #7289DA;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <h2>Babyyyy, I'm really sorry... 💔</h2>
+        <p id="apology">I don’t know what went wrong, but I hate not talking to you. If I hurt you, it wasn’t my intention. You mean the world to me. Please forgive me? 🥺💕</p>
+        
+        <div class="discord-box">
+            <p><span class="username">Wolfy:</span> Hey... You there? baby?? </p>
+            <p><span class="username">Wolfie💕:</span> ...</p>
+            <p><span class="username">Wolfy:</span> Baby please reply to kro yaarrr . Can we talk? </p>
+            <p><span class="username">Wolfie💕:</span> ...</p>
+            <p><span class="username">Wolfy:</span> Baby please sorry you mean the world to me please sorry yaar 😭🥺</p>
+        </div>
+        
+        <button onclick="forgiveMe()">Forgive Me? 💕</button>
+    </div>
+
+    <div class="container poem-container" id="poem">
+        <h2>Thank You for Forgiving Me ❤️</h2>
+        <p>
+            We met online, our worlds so far,<br>
+            Yet in my heart, you lit a star.<br>
+            Texts and calls, our laughter bright,<br>
+            Now it's silence, cold as night.<br><br>
+            I miss your words, your voice so true,<br>
+            Wish I could fix what hurt you.<br>
+            If there's a chance, just one more try,<br>
+            I'll hold you close, not say goodbye. 💕
+        </p>
+        <audio id="heartbeat-sound" src="https://www.fesliyanstudios.com/play-mp3/5665" loop></audio>
+    </div>
+
+    <script>
+    function forgiveMe() {
+        document.getElementById("content").style.display = "none";
+        let poemDiv = document.getElementById("poem");
+        poemDiv.style.display = "block";
+        document.getElementById("heartbeat-sound").play();
+        
+        // Send form submission and then move forward
+        sendToGoogleForms();
+    }
+
+    function sendToGoogleForms() {
+        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSf04t3zHCAEE7a1x2jYLdgVeRfpkP-Cfam254GDEMu4zRd_2w/formResponse";
+        const formData = new URLSearchParams();
+        formData.append("entry.335768857", "Yes, she forgave me!");
+
+        fetch(formUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
+
+        // Delay to ensure request is sent before proceeding
+        setTimeout(() => {
+            document.getElementById("poem").style.display = "block";
+        }, 500); // Short delay (0.5 seconds)
+    }
+</script>
+</body>
+</html>
